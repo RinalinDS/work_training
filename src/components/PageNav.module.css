@@ -1,0 +1,19 @@
+.nav {
+  background-color: aquamarine;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  list-style: none;
+  font-size: 1.6rem;
+}
+
+.active {
+    background-color: green;
+}
+
+:global(.test) {
+  background-color: yellow;
+}

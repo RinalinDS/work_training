@@ -1,8 +1,8 @@
-import { ReactElement, useContext } from "react";
-import { AuthContext } from "../App";
+import { ReactElement } from "react";
 import { Navigate } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export const PrivateRoute = ({ children }: { children: ReactElement }) => {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn } = useAuthContext();
   return isLoggedIn ? children : <Navigate to="/login" />;
 };
