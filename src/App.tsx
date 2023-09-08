@@ -8,6 +8,7 @@ import { PageNotFound } from "./pages/PageNotFound";
 import { Pricing } from "./pages/Pricing";
 import { Product } from "./pages/Product";
 import { CityList, CityType } from "./components/CityList";
+import CountryList from "./components/CountryList";
 const Base_URL = "http://localhost:9000";
 
 export const App: FC = () => {
@@ -46,7 +47,10 @@ export const App: FC = () => {
             path="cities"
             element={<CityList cities={cities} isLoading={isLoading} />}
           />
-          <Route path="countries" element={<div>countries</div>} />
+          <Route
+            path="countries"
+            element={<CountryList cities={cities} isLoading={isLoading} />}
+          />
           <Route path="form" element={<div>form</div>} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
