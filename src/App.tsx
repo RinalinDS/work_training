@@ -9,6 +9,7 @@ import { Pricing } from "./pages/Pricing";
 import { Product } from "./pages/Product";
 import { CityList, CityType } from "./components/CityList";
 import CountryList from "./components/CountryList";
+import City from "./components/City/City";
 const Base_URL = "http://localhost:9000";
 
 export const App: FC = () => {
@@ -47,6 +48,7 @@ export const App: FC = () => {
             path="cities"
             element={<CityList cities={cities} isLoading={isLoading} />}
           />
+          <Route path="cities/:id" element={<City />} />
           <Route
             path="countries"
             element={<CountryList cities={cities} isLoading={isLoading} />}
