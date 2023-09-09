@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthContextProvider } from "./hooks/useAuthContext";
 import { AppLayout } from "./pages/AppLayout";
 import { Homepage } from "./pages/Homepage";
@@ -10,6 +10,7 @@ import { Product } from "./pages/Product";
 import { CityList, CityType } from "./components/CityList";
 import CountryList from "./components/CountryList";
 import City from "./components/City/City";
+import Form from "./components/Form";
 const Base_URL = "http://localhost:9000";
 
 export const App: FC = () => {
@@ -39,10 +40,7 @@ export const App: FC = () => {
         <Route path="/product" element={<Product />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/app" element={<AppLayout />}>
-          <Route
-            index
-            element={<CityList cities={cities} isLoading={isLoading} />}
-          />
+          <Route index element={<Navigate to="cities" />} />
 
           <Route
             path="cities"
@@ -53,7 +51,7 @@ export const App: FC = () => {
             path="countries"
             element={<CountryList cities={cities} isLoading={isLoading} />}
           />
-          <Route path="form" element={<div>form</div>} />
+          <Route path="form" element={<Form />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
         <Route path="/login" element={<Login />} />

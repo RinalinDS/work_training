@@ -1,7 +1,9 @@
 // "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=0&longitude=0"
 
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+import Button from "./Button";
 import styles from "./Form.module.css";
 
 export function convertToEmoji(countryCode: string) {
@@ -17,6 +19,8 @@ function Form() {
   const [country, setCountry] = useState("");
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
+
+  const navigate = useNavigate();
 
   return (
     <form className={styles.form}>
@@ -35,7 +39,7 @@ function Form() {
         <input
           id="date"
           onChange={(e) => setDate(e.target.value)}
-          value={date}
+          value={date.toISOString()}
         />
       </div>
 
@@ -49,8 +53,18 @@ function Form() {
       </div>
 
       <div className={styles.buttons}>
-        <button>Add</button>
-        <button>&larr; Back</button>
+        <Button type="primary">Add</Button>
+        <Button
+          type="back"
+          onClick={(e: MouseEvent<HTMLButtonElement>) => {
+            // потому что внутри формы клик на баттон тригерит сабмит и страница перезагружается, а мне этого не надою
+            e.preventDefault();
+            
+            navigate(-1);
+          }}
+        >
+          &larr; Back
+        </Button>
       </div>
     </form>
   );
