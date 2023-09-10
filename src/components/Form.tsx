@@ -38,7 +38,7 @@ function Form() {
         <label htmlFor="date">When did you go to {cityName}?</label>
         <input
           id="date"
-          onChange={(e) => setDate(e.target.value)}
+          onChange={(e) => setDate(new Date(e.target.value))}
           value={date.toISOString()}
         />
       </div>
@@ -59,7 +59,7 @@ function Form() {
           onClick={(e: MouseEvent<HTMLButtonElement>) => {
             // потому что внутри формы клик на баттон тригерит сабмит и страница перезагружается, а мне этого не надою
             e.preventDefault();
-            
+
             navigate(-1);
           }}
         >
